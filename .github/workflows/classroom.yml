@@ -1,26 +1,130 @@
 name: Autograding Tests
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-
+'on':
+- push
+- repository_dispatch
 permissions:
   checks: write
   actions: read
   contents: read
-
 jobs:
   run-autograding-tests:
     runs-on: ubuntu-latest
     if: github.actor != 'github-classroom[bot]'
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Autograding
-        uses: education/autograding@v1
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: S1.1 — Direct connection
+      id: s1-1-direct-connection
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S1.1 — Direct connection
+        setup-command: chmod +x run_task1.sh run_task2.sh
+        command: python3 tests/autograder.py S1_1
+        timeout: 10
+        max-score: 4
+    - name: S1.2 — Multi-platform station
+      id: s1-2-multi-platform-station
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S1.2 — Multi-platform station
+        setup-command: ''
+        command: python3 tests/autograder.py S1_2
+        timeout: 10
+        max-score: 4
+    - name: S1.3 — Dwell time
+      id: s1-3-dwell-time
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S1.3 — Dwell time
+        setup-command: ''
+        command: python3 tests/autograder.py S1_3
+        timeout: 10
+        max-score: 4
+    - name: S1.4 — Calendar filtering
+      id: s1-4-calendar-filtering
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S1.4 — Calendar filtering
+        setup-command: ''
+        command: python3 tests/autograder.py S1_4
+        timeout: 10
+        max-score: 4
+    - name: S1.5 — Transfer criterion (0)
+      id: s1-5-transfer-criterion-0
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S1.5 — Transfer criterion (0)
+        setup-command: ''
+        command: python3 tests/autograder.py S1_5
+        timeout: 10
+        max-score: 4
+    - name: S1.5 — Transfer criterion (multi)
+      id: s1-5-transfer-criterion-multi
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S1.5 — Transfer criterion (multi)
+        setup-command: ''
+        command: python3 tests/autograder.py S1_5_MULTI
+        timeout: 10
+        max-score: 4
+    - name: S2.1 — TSP 2 stops
+      id: s2-1-tsp-2-stops
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S2.1 — TSP 2 stops
+        setup-command: ''
+        command: python3 tests/autograder.py S2_1
+        timeout: 10
+        max-score: 4
+    - name: S2.2 — TSP 3 stops
+      id: s2-2-tsp-3-stops
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S2.2 — TSP 3 stops
+        setup-command: ''
+        command: python3 tests/autograder.py S2_2
+        timeout: 10
+        max-score: 4
+    - name: S2.3 — TSP cost asymmetry
+      id: s2-3-tsp-cost-asymmetry
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S2.3 — TSP cost asymmetry
+        setup-command: ''
+        command: python3 tests/autograder.py S2_3
+        timeout: 10
+        max-score: 4
+    - name: S2.4 — TSP Tabu list
+      id: s2-4-tsp-tabu-list
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S2.4 — TSP Tabu list
+        setup-command: ''
+        command: python3 tests/autograder.py S2_4
+        timeout: 10
+        max-score: 4
+    - name: S2.5 — TSP transfers
+      id: s2-5-tsp-transfers
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: S2.5 — TSP transfers
+        setup-command: ''
+        command: python3 tests/autograder.py S2_5
+        timeout: 10
+        max-score: 4
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        S1-1-DIRECT-CONNECTION_RESULTS: "${{steps.s1-1-direct-connection.outputs.result}}"
+        S1-2-MULTI-PLATFORM-STATION_RESULTS: "${{steps.s1-2-multi-platform-station.outputs.result}}"
+        S1-3-DWELL-TIME_RESULTS: "${{steps.s1-3-dwell-time.outputs.result}}"
+        S1-4-CALENDAR-FILTERING_RESULTS: "${{steps.s1-4-calendar-filtering.outputs.result}}"
+        S1-5-TRANSFER-CRITERION-0_RESULTS: "${{steps.s1-5-transfer-criterion-0.outputs.result}}"
+        S1-5-TRANSFER-CRITERION-MULTI_RESULTS: "${{steps.s1-5-transfer-criterion-multi.outputs.result}}"
+        S2-1-TSP-2-STOPS_RESULTS: "${{steps.s2-1-tsp-2-stops.outputs.result}}"
+        S2-2-TSP-3-STOPS_RESULTS: "${{steps.s2-2-tsp-3-stops.outputs.result}}"
+        S2-3-TSP-COST-ASYMMETRY_RESULTS: "${{steps.s2-3-tsp-cost-asymmetry.outputs.result}}"
+        S2-4-TSP-TABU-LIST_RESULTS: "${{steps.s2-4-tsp-tabu-list.outputs.result}}"
+        S2-5-TSP-TRANSFERS_RESULTS: "${{steps.s2-5-tsp-transfers.outputs.result}}"
+      with:
+        runners: s1-1-direct-connection,s1-2-multi-platform-station,s1-3-dwell-time,s1-4-calendar-filtering,s1-5-transfer-criterion-0,s1-5-transfer-criterion-multi,s2-1-tsp-2-stops,s2-2-tsp-3-stops,s2-3-tsp-cost-asymmetry,s2-4-tsp-tabu-list,s2-5-tsp-transfers
