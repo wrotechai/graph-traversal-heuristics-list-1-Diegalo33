@@ -1,0 +1,114 @@
+{
+  "tests": [
+    {
+      "name": "S1.1 — Direct connection (graph construction)",
+      "setup": "chmod +x run_task1.sh run_task2.sh",
+      "run": "python3 tests/autograder.py S1_1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 300,
+      "points": 4
+    },
+    {
+      "name": "S1.2 — Multi-platform station (parent_station)",
+      "setup": "",
+      "run": "python3 tests/autograder.py S1_2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 300,
+      "points": 4
+    },
+    {
+      "name": "S1.3 — Dwell time handling",
+      "setup": "",
+      "run": "python3 tests/autograder.py S1_3",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 300,
+      "points": 4
+    },
+    {
+      "name": "S1.4 — Calendar filtering (Wed vs Sat)",
+      "setup": "",
+      "run": "python3 tests/autograder.py S1_4",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 300,
+      "points": 4
+    },
+    {
+      "name": "S1.5 — Transfer criterion (0 transfers)",
+      "setup": "",
+      "run": "python3 tests/autograder.py S1_5",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 300,
+      "points": 4
+    },
+    {
+      "name": "S1.5 ext — Transfer criterion (multi-transfer)",
+      "setup": "",
+      "run": "python3 tests/autograder.py S1_5_MULTI",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 300,
+      "points": 4
+    },
+    {
+      "name": "S2.1 — TSP: 2 stops on one line",
+      "setup": "",
+      "run": "python3 tests/autograder.py S2_1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 300,
+      "points": 4
+    },
+    {
+      "name": "S2.2 — TSP: 3 stops, different directions",
+      "setup": "",
+      "run": "python3 tests/autograder.py S2_2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 600,
+      "points": 4
+    },
+    {
+      "name": "S2.3 — TSP: cost asymmetry (time-dependent)",
+      "setup": "",
+      "run": "python3 tests/autograder.py S2_3",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 600,
+      "points": 4
+    },
+    {
+      "name": "S2.4 — TSP: Tabu list mechanism (3 stops)",
+      "setup": "",
+      "run": "python3 tests/autograder.py S2_4",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 600,
+      "points": 4
+    },
+    {
+      "name": "S2.5 — TSP: transfer criterion",
+      "setup": "",
+      "run": "python3 tests/autograder.py S2_5",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 600,
+      "points": 4
+    }
+  ]
+}
